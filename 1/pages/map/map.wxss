@@ -1,0 +1,202 @@
+/* 全局容器 */
+.map-container {
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f7fa;
+  position: relative;
+}
+
+/* 顶部导航栏 */
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 88rpx;
+  background: linear-gradient(135deg, #0066ff 0%, #3399ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  box-shadow: 0 2rpx 10rpx rgba(0, 102, 255, 0.2);
+}
+
+.header-title {
+  color: white;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+/* 搜索栏 */
+.search-wrapper {
+  position: absolute;
+  top: 108rpx;
+  left: 24rpx;
+  right: 24rpx;
+  z-index: 99;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 12rpx;
+  padding: 0 24rpx;
+  height: 80rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.search-icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 16rpx;
+}
+
+.search-input {
+  flex: 1;
+  height: 100%;
+  font-size: 28rpx;
+  color: #333;
+}
+
+/* 地图主体 */
+.campus-map {
+  width: 100%;
+  height: 100%;
+}
+
+/* 地图控制按钮 */
+.map-controls {
+  position: absolute;
+  right: 24rpx;
+  bottom: 180rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.control-btn {
+  width: 88rpx;
+  height: 88rpx;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+}
+
+.control-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.control-text {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #0066ff;
+}
+
+/* 地点详情弹窗 */
+.poi-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.poi-popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.poi-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 32rpx 32rpx 0 0;
+  padding: 40rpx 32rpx;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.poi-popup.show .poi-content {
+  transform: translateY(0);
+}
+
+.poi-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.poi-address {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 40rpx;
+}
+
+.address-icon {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 12rpx;
+}
+
+.poi-actions {
+  display: flex;
+  gap: 20rpx;
+}
+
+.action-btn {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, #0066ff 0%, #3399ff 100%);
+  color: white;
+}
+
+.action-btn.secondary {
+  background: #f5f7fa;
+  color: #666;
+}
+
+.btn-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 8rpx;
+}
+
+/* 加载提示 */
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28rpx;
+  color: #666;
+}

@@ -1,0 +1,75 @@
+<view class="map-container">
+  <!-- 顶部导航栏 -->
+  <view class="header">
+    <text class="header-title">共济校圈 · 校园地图</text>
+  </view>
+
+  <!-- 搜索栏 -->
+  <view class="search-wrapper">
+    <view class="search-box">
+      <image class="search-icon" src="https://img.icons8.com/fluency-systems-regular/48/0066ff/search.png" />
+      <input 
+        class="search-input" 
+        placeholder="搜索教学楼、食堂、宿舍..." 
+        placeholder-style="color:#999"
+        value="{{searchKeyword}}"
+        bindinput="onSearchInput"
+        bindconfirm="doSearch"
+      />
+    </view>
+  </view>
+
+  <!-- 地图主体 -->
+  <map
+    id="campusMap"
+    class="campus-map"
+    longitude="{{centerLongitude}}"
+    latitude="{{centerLatitude}}"
+    scale="{{mapScale}}"
+    markers="{{markers}}"
+    polyline="{{polyline}}"
+    show-location="{{true}}"
+    enable-rotate="{{false}}"
+    enable-overlooking="{{false}}"
+    bindmarkertap="onMarkerClick"
+    bindtap="onMapTap"
+  >
+    <!-- 地图右侧控制按钮 -->
+    <cover-view class="map-controls">
+      <cover-view class="control-btn" bindtap="goToMyLocation">
+        <cover-image class="control-icon" src="https://img.icons8.com/fluency-systems-regular/48/0066ff/location.png" />
+      </cover-view>
+      <cover-view class="control-btn" bindtap="zoomIn">
+        <cover-text class="control-text">+</cover-text>
+      </cover-view>
+      <cover-view class="control-btn" bindtap="zoomOut">
+        <cover-text class="control-text">-</cover-text>
+      </cover-view>
+    </cover-view>
+  </map>
+
+  <!-- 地点详情底部弹窗 -->
+  <view class="poi-popup {{showPoiPopup ? 'show' : ''}}" bindtap="closePoiPopup">
+    <view class="poi-content" catchtap="stopPropagation">
+      <view class="poi-title">{{currentPoi.title}}</view>
+      <view class="poi-address">
+        <image class="address-icon" src="https://img.icons8.com/fluency-systems-regular/24/666666/marker.png" />
+        <text>{{currentPoi.address}}</text>
+      </view>
+      <view class="poi-actions">
+        <button class="action-btn primary" bindtap="planRoute">
+          <image class="btn-icon" src="https://img.icons8.com/fluency-systems-regular/24/ffffff/route.png" />
+          查看路线
+        </button>
+        <button class="action-btn secondary" bindtap="navigateToPoi">
+          导航前往
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载提示 -->
+  <view class="loading" wx:if="{{isLoading}}">
+    <text>正在加载地图...</text>
+  </view>
+</view>
