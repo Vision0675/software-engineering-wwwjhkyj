@@ -29,6 +29,10 @@ services:
       dockerfile: Dockerfile
     environment:
       - DB_URI=mysql+pymysql://root:root_password@campus_mysql:3306/campus_task_db
+      # 新增：大模型与支付分账所需的环境变量
+      - LLM_API_KEY=your_llm_api_key_here
+      - WXPAY_MERCHANT_ID=your_merchant_id
+      - WXPAY_API_V3_KEY=your_api_v3_key
     depends_on:
       - campus_mysql
 
